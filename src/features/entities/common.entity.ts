@@ -6,8 +6,10 @@ import {
 } from 'typeorm'
 
 export class CommonEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string
+  // @PrimaryGeneratedColumn('uuid')
+  // id: string
+  @PrimaryGeneratedColumn()
+  id: number
 
   @Exclude()
   @CreateDateColumn({

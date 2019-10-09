@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
@@ -17,10 +17,10 @@ export class AccountService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
   async signIn(authDto: AccountDto): Promise<Token> {
-    return this.authService.createToken(authDto.email)
+    return await this.authService.createToken(authDto)
   }
 
   async signUp(authDto: AccountDto): Promise<void> {
-    await this.userRepository.save(authDto)
+    await this.userRepository.save(Object.assign(new UserEntity(), authDto))
   }
 }

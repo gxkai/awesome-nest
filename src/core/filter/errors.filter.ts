@@ -41,26 +41,9 @@ export class ExceptionsFilter implements ExceptionFilter {
       response.header('Content-Type', 'application/json; charset=utf-8')
       response.send(errorResponse)
     } else {
-      if (!isProd) {
-        const youch = new Youch(exception, request)
-
-        const html = await youch
-          .addLink(link => {
-            const url = `https://stackoverflow.com/search?q=${encodeURIComponent(
-              `[adonis.js] ${link.message}`,
-            )}`
-            return `<a href="${url}" target="_blank" title="Search on StackOverflow">Search StackOverflow</a>`
-          })
-          .toHTML()
-
-        response.type('text/html')
-        response.status(HttpStatus.INTERNAL_SERVER_ERROR)
-        response.send(html)
-      } else {
-        response.status(HttpStatus.INTERNAL_SERVER_ERROR)
-        response.header('Content-Type', 'application/json; charset=utf-8')
-        response.send(errorResponse)
-      }
+      response.status(HttpStatus.INTERNAL_SERVER_ERROR)
+      response.header('Content-Type', 'application/json; charset=utf-8')
+      response.send(errorResponse)
     }
   }
 }

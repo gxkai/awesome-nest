@@ -13,21 +13,7 @@ import { logger } from './core/middleware/logger.middleware'
 import { ValidationPipe } from './core/pipe/validation.pipe'
 import { Logger } from './shared/utils/logger'
 
-const API_PREFIX = 'api/v1'
-
-async function initSwagger(app) {
-  const options = new DocumentBuilder()
-    .setTitle('Awesome-nest')
-    .setDescription('The Awesome-nest API Documents')
-    .setBasePath(API_PREFIX)
-    .addBearerAuth()
-    .setVersion('0.0.1')
-    .build()
-
-  const document = SwaggerModule.createDocument(app, options)
-  SwaggerModule.setup('docs', app, document)
-  // swagger 地址: http://${config.hostName}:${config.port}/docs
-}
+const API_PREFIX = 'api'
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -35,8 +21,6 @@ async function bootstrap() {
   })
 
   app.setGlobalPrefix(API_PREFIX)
-
-  await initSwagger(app)
 
   app.useStaticAssets(join(__dirname, '..', 'static'))
   app.setBaseViewsDir(join(__dirname, '..', 'views'))

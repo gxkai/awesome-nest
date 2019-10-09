@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-interface Response<T> {
+export interface Response<T> {
   data: T
 }
 

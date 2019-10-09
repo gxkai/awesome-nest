@@ -11,21 +11,21 @@ import {
   UseInterceptors,
 } from '@nestjs/common'
 import { AuthGuard } from '@nestjs/passport'
-import { ApiBearerAuth, ApiUseTags } from '@nestjs/swagger'
 import { EntityManager, Transaction, TransactionManager } from 'typeorm'
 
+import { Roles } from '../../../core/decorators/roles.decorator'
+import { RolesGuard } from '../../../core/guards/roles.guard'
 import { CreateCatDto } from '../../dtos/cat.dto'
 import { CatEntity } from '../../entities/cat.entity'
 
 import { CatsService } from './cats.service'
 
-@ApiUseTags('cats')
-@ApiBearerAuth()
 @Controller('cats')
-@UseGuards(AuthGuard())
+@UseGuards(AuthGuard(), RolesGuard)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
+  @Roles('admin')
   @Get('page')
   @Render('catsPage')
   getCatsPage(): Promise<any> {
@@ -34,7 +34,7 @@ export class CatsController {
 
   @Get(':id')
   @UseInterceptors(ClassSerializerInterceptor)
-  findOne(@Param('id') id: string): Promise<Partial<CatEntity>[]> {
+  findOne(@Param('id') id: number): Promise<Partial<CatEntity>[]> {
     return this.catsService.getCat(id)
   }
 

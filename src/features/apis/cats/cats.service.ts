@@ -15,7 +15,7 @@ export class CatsService {
     private readonly lunarCalendarService: LunarCalendarService,
   ) {}
 
-  async getCat(id: string): Promise<Partial<CatEntity>[]> {
+  async getCat(id: number): Promise<Partial<CatEntity>[]> {
     Logger.info('id', id)
     const lunarCalendar = await this.lunarCalendarService
       .getLunarCalendar()
