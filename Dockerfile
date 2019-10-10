@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 
-COPY . /app
+COPY ./ /app
 
 RUN cnpm i pm2 -g \
     && cnpm i \
