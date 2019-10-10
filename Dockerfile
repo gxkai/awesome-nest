@@ -8,6 +8,4 @@ RUN cnpm i \
     && cnpm i -g pm2 \
     && npm run build
 
-EXPOSE 4000
-
-CMD ["npm", "prod"]
+CMD npm run prod
