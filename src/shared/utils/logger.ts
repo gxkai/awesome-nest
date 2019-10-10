@@ -111,7 +111,7 @@ if (isProd) {
         level: 'warn',
       },
     },
-    pm2: false,
+    pm2: true,
     disableClustering: true,
     categories: {
       default: {
