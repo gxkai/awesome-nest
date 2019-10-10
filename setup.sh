@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 image_version=`date +%Y%m%d%H%M`;
 # 构建nest/test:$image_version镜像
-rm -rf node_modules/
 docker build -t nest/test:$image_version .;
 # 查看镜像列表
 docker images;
