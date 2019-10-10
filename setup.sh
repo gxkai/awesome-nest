@@ -9,7 +9,7 @@ docker stop nest_test || true;
 # 删除nest_test容器
 docker rm nest_test || true;
 # 基于nest/test 镜像 构建一个容器 nest_test
-docker run -d -v /home/nest-test:/app -p 4000:4000 --restart=always  --name nest_test nest/test:$image_version;
+docker run -d  -p 4000:4000 --restart=always  --name nest_test nest/test:$image_version;
 # 查看日志
 docker logs nest_test;
 #删除build过程中产生的镜像    #docker image prune -a -f
