@@ -6,8 +6,7 @@ RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 COPY ./ /app
 
-RUN cnpm i pm2 -g \
-    && cnpm i \
+RUN && cnpm i \
     && npm run build
 
 EXPOSE 4000
