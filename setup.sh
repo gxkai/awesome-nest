@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-docker ps
-cp -r . nginx_api:/app
+cp -r . /var/jenkins_home/app
 docker exec -it nginx_api /app/api.sh
