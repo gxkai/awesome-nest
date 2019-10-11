@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-npm i
-npm run build
 cp ./dist /home/app
 cp package.json /home/app
 cp api.sh /home/app
