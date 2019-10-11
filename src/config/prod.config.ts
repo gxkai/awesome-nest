@@ -2,10 +2,11 @@ import { resolve } from 'path'
 
 export default {
   port: 4000,
+  hostName: '0.0.0.0',
 
   orm: {
     type: 'mysql',
-    host: '139.196.102.55',
+    host: process.env.MYSQL_HOST,
     port: 3306,
     username: 'root',
     password: '123456',

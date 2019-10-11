@@ -7,7 +7,7 @@ export const isProd = process.env.NODE_ENV === 'production'
 
 let config = {
   port: 3000,
-  hostName: '0.0.0.0',
+  hostName: 'localhost',
 
   orm: {
     type: 'mysql',
