@@ -6,7 +6,7 @@ export default {
 
   orm: {
     type: 'mysql',
-    host: process.env.MYSQL_HOST,
+    host: '139.196.102.55',
     port: 3306,
     username: 'root',
     password: '123456',
